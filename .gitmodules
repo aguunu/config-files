@@ -1,0 +1,18 @@
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
+[submodule "tmux/plugins/tmux-cpu"]
+	path = tmux/plugins/tmux-cpu
+	url = https://github.com/tmux-plugins/tmux-cpu.git
+[submodule "tmux/plugins/tmux-yank"]
+	path = tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank.git
+[submodule "zsh/.zsh/custom/zsh-autosuggestions"]
+	path = zsh/.zsh/custom/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "zsh/.zsh/custom/zsh-syntax-highlighting"]
+	path = zsh/.zsh/custom/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/.zsh/custom/themes/powerlevel10k"]
+	path = zsh/.zsh/custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
