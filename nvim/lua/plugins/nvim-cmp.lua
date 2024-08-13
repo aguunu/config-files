@@ -5,34 +5,36 @@ local config = function()
         view = {
             entries = {
                 name = 'custom',
-                selection_order = 'top_down',
-                follow_cursor = true,
+                selection_order = 'near_cursor',
+                autocomplete = true,
+                -- follow_cursor = true,
             }
         },
         completion = {
-            completeopt = "menu,menuone,preview,fuzzy",
+            -- completeopt = "menu,menuone,preview,fuzzy",
+            completeopt = "menuone,popup,fuzzy"
             -- placeholder = true,
         },
         mapping = cmp.mapping.preset.insert({
             ["<C-k>"] = cmp.mapping.select_prev_item(),
             ["<C-j>"] = cmp.mapping.select_next_item(),
-            ["<C-a"] = cmp.mapping.close(),
-            ["<Tab>"] = cmp.mapping.confirm({
-                select = true,
-                behavior = cmp.ConfirmBehavior.Replace
-            }),
+            -- ["<C-a>"] = cmp.mapping.close(),
+            -- ["<Tab>"] = cmp.mapping.confirm({
+            --     select = true,
+            --     behavior = cmp.ConfirmBehavior.Replace
+            -- }),
             ["<CR>"] = cmp.mapping.confirm({
                 select = true,
                 behavior = cmp.ConfirmBehavior.Replace
             }),
-            ["<S-k>"] = cmp.mapping.scroll_docs(-2),
-            ["<S-j>"] = cmp.mapping.scroll_docs(2),
+            ["<S-Tab>"] = cmp.mapping.scroll_docs(-2),
+            ["<Tab>"] = cmp.mapping.scroll_docs(2),
         }),
         sources = cmp.config.sources({
             { name = "nvim_lsp" },
             { name = "path" },
             { name = "nvim_lsp_signature_help" },
-            { name = "buffer" },
+            -- { name = "buffer" },
         }),
         window = {
             completion = {

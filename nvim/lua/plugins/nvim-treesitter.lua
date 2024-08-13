@@ -41,7 +41,8 @@ local config = function()
             "latex",
             "tsx",
             "typescript",
-            "toml",
+            "json",
+            "ruby",
         },
     })
 end

@@ -13,7 +13,7 @@ local config = function()
     vim.keymap.set('n', '<leader>ds', function() builtin.diagnostics() end, { desc = 'Search diagnostics' })
     telescope.setup({
         defaults = {
-            path_display = { 'smart' },
+--            path_display = { 'smart' },
             prompt_prefix = '> ',
             selection_caret = ' ',
             entry_prefix = ' ',

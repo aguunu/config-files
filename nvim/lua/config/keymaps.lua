@@ -17,7 +17,7 @@ keymap.set('n', 'U', '<C-r>', { noremap = true})
 
 -- window managment
 keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split window vertically' })
-keymap.set('n', '<leader>wh', '<C-w>h', { desc = 'Split window horizontally' })
+keymap.set('n', '<leader>wh', '<C-w>s', { desc = 'Split window horizontally' })
 keymap.set('n', '<leader>wx', '<C-w>q', { desc = 'Quit a window' })
 keymap.set('n', '<leader>ww', '<C-w>w', { desc = 'Switch windows' })
 
@@ -49,7 +49,8 @@ vim.diagnostic.config({
 keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions', noremap = true, silent = true })
 keymap.set('n', '<leader>cd', vim.lsp.buf.definition, { desc = 'Go to definition' })
 keymap.set('n', '<leader>ci', vim.lsp.buf.implementation, { desc = 'Go to implementation' })
-keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = 'Format' })
+keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = 'Format All' })
+keymap.set('v', '<leader>cf', vim.lsp.buf.format, { desc = 'Format Selection' })
 keymap.set('n', '<leader>cr', vim.lsp.buf.references, { desc = 'Go to references' })
 keymap.set('n', '<leader>cc', vim.lsp.buf.hover, { desc = 'Hover' })
 keymap.set('n', '<leader>cs', vim.lsp.buf.signature_help, { desc = 'Signature help' })

@@ -5,6 +5,7 @@ local config = function()
     lspconfig.rust_analyzer.setup({})
     lspconfig.texlab.setup({})
     lspconfig.clangd.setup({})
+    lspconfig.ruff.setup({})
 
     -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     --     border = 'rounded'
