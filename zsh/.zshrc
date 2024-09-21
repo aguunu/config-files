@@ -67,7 +67,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-. "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
 #eval "$(dircolors ~/.dircolors)"
 
 export NVM_DIR="$HOME/.nvm"
@@ -77,3 +77,5 @@ export NVM_DIR="$HOME/.nvm"
 source "$ZSH/custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PATH="$HOME/.local/bin:$PATH"
