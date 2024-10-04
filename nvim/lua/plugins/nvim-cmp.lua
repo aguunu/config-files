@@ -29,6 +29,8 @@ local config = function()
             }),
             ["<S-Tab>"] = cmp.mapping.scroll_docs(-2),
             ["<Tab>"] = cmp.mapping.scroll_docs(2),
+            ["<S-k>"] = cmp.mapping.scroll_docs(-2),
+            ["<S-j>"] = cmp.mapping.scroll_docs(2),
         }),
         sources = cmp.config.sources({
             { name = "nvim_lsp" },
@@ -47,6 +49,29 @@ local config = function()
             },
         },
     })
+
+    -- `/` cmdline setup.
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' }
+      }
+    })
+
+    -- `:` cmdline setup.
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' }
+      }, {
+        {
+          name = 'cmdline',
+          option = {
+            ignore_cmds = { 'Man', '!' }
+          }
+        }
+      })
+    })
 end
 
 return {
@@ -56,7 +81,8 @@ return {
         'hrsh7th/cmp-nvim-lsp',
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        "hrsh7th/cmp-nvim-lsp-signature-help"
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-cmdline",
     },
     config = config,
 }

@@ -17,7 +17,7 @@ local config = function()
             TelescopePromptNormal = { bg = "none" },
             TelescopeResultsNormal = { fg = "subtle", bg = "none" },
             TelescopeSelection = { fg = "text", bg = "highlight_med" },
---[[             TelescopeSelectionCaret = { fg = "highlight_med", bg = "highlight_med" }, ]]
+            --[[             TelescopeSelectionCaret = { fg = "highlight_med", bg = "highlight_med" }, ]]
             TelescopeMatching = { fg = "foam" },
             -- cmp highlights
             CmpBorder = { fg = "none", bg = "subtle" },
