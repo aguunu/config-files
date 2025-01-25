@@ -44,6 +44,13 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 source "$ZSH/custom/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZSH/custom/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+# Set vi mode
+EDITOR='nvim'
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
@@ -54,6 +61,7 @@ bindkey '^j' history-search-forward
 
 bindkey '^I'   complete-word       # tab          | complete
 bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
+
 # Alias
 alias vim=nvim
 
@@ -79,3 +87,12 @@ source "$ZSH/custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="$HOME/.local/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_OPTS="
+	--color=fg:#908caa,bg:#191724,hl:#ebbcba
+	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
+	--color=border:#403d52,header:#31748f,gutter:#191724
+	--color=spinner:#f6c177,info:#9ccfd8
+	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
