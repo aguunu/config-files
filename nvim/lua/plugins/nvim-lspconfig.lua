@@ -6,10 +6,27 @@ local config = function()
     lspconfig.texlab.setup({})
     lspconfig.clangd.setup({})
     lspconfig.ruff.setup({})
-
-    -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    --     border = 'rounded'
+    lspconfig.jdtls.setup({})
+    lspconfig.ts_ls.setup({})
+    -- lspconfig.harper_ls.setup({
+    --     codeActions = {
+    --         forceStable = true,
+    --     }
     -- })
+
+    local border = 'rounded'
+
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = 'rounded'
+    })
+
+    -- Add border to the diagnostic popup window
+    vim.diagnostic.config({
+        -- virtual_text = {
+        --     prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
+        -- },
+        float = { border = border },
+    })
 end
 
 return {

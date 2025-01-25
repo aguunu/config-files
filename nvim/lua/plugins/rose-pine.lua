@@ -25,8 +25,8 @@ local config = function()
             CmpNormal = { fg = "text", bg = "surface" },
             CmpDocNormal = { fg = "text", bg = "surface" },
             -- floating window highlights
-            NormalFloat = { fg = "text", bg = "surface" },
-            FloatBorder = { fg = "none", bg = "surface" },
+            -- NormalFloat = { fg = "text", bg = "surface" },
+            -- FloatBorder = { fg = "none", bg = "surface" },
         },
     })
 

@@ -2,7 +2,7 @@
 
 local opt = vim.opt
 
--- Tab / Identation
+-- Tab / Indentation
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = 4
@@ -27,7 +27,7 @@ opt.signcolumn = 'yes'
 opt.scrolloff = 10
 -- opt.completeopt = 'menuone,noinsert,noselect'
 
--- Behaviour
+-- Behavior
 -- opt.hidden = true
 -- opt.errorbells = false
 -- opt.swapfile = false
