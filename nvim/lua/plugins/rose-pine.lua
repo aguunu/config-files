@@ -27,22 +27,24 @@ local config = function()
             -- floating window highlights
             -- NormalFloat = { fg = "text", bg = "surface" },
             -- FloatBorder = { fg = "none", bg = "surface" },
+            FzfLuaHeaderText = { fg = "iris" },
+            FzfLuaLivePrompt = { fg = "iris" },
         },
     })
 
-    local lualine = require('lualine')
-    local theme = require('lualine.themes.rose-pine')
+    -- local lualine = require('lualine')
+    -- local theme = require('lualine.themes.rose-pine')
     -- set transparent background
     --[[ theme.normal.c.bg = nil
     theme.insert.c.bg = nil
     theme.command.c.bg = nil
     theme.visual.c.bg = nil
     theme.replace.c.bg = nil ]]
-    lualine.setup({
-        options = {
-            theme = theme,
-        }
-    })
+    -- lualine.setup({
+    --     options = {
+    --         theme = theme,
+    --     }
+    -- })
     vim.opt.laststatus = 2 -- Or 3 for global statusline
     vim.opt.statusline = " %f %m %= %l:%c ♥ "
 

@@ -1,6 +1,7 @@
 -- :help cmp
 local config = function()
     local cmp = require("cmp")
+
     cmp.setup({
         view = {
             entries = {
@@ -40,11 +41,11 @@ local config = function()
         }),
         window = {
             completion = {
-                -- border = "rounded",
+                -- border = "single",
                 winhighlight = "Normal:CmpNormal",
             },
             documentation = {
-                -- border = "rounded",
+                -- border = "single",
                 winhighlight = "Normal:CmpDocNormal",
             },
         },
@@ -52,25 +53,25 @@ local config = function()
 
     -- `/` cmdline setup.
     cmp.setup.cmdline('/', {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = 'buffer' }
-      }
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+            { name = 'buffer' }
+        }
     })
 
     -- `:` cmdline setup.
     cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = 'path' }
-      }, {
-        {
-          name = 'cmdline',
-          option = {
-            ignore_cmds = { 'Man', '!' }
-          }
-        }
-      })
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+            { name = 'path' }
+        }, {
+            {
+                name = 'cmdline',
+                option = {
+                    ignore_cmds = { 'Man', '!' }
+                }
+            }
+        })
     })
 end
 

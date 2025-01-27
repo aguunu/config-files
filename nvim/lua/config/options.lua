@@ -1,4 +1,8 @@
 -- vim.cmd('let g:netrw_liststyle = 3')
+vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank()')
+
+-- don't give the intro message when starting Vim
+vim.opt.shortmess:append({ I = true })
 
 local opt = vim.opt
 
@@ -37,3 +41,4 @@ opt.encoding = 'UTF-8'
 -- opt.foldenable = false
 -- opt.foldmethod = 'expr'
 -- opt.foldexpr = 'nvim_treesitter#foldexpr()'
+
