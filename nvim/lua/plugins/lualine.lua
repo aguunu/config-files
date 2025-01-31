@@ -1,6 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
@@ -14,9 +14,9 @@ return {
         lualine.setup({
             options = {
                 theme = "rose-pine",
+                globalstatus = false,
                 component_separators = "",
                 section_separators = { left = "", right = "" },
-                disabled_filetypes = { "alpha" },
             },
             sections = {
                 lualine_a = {
