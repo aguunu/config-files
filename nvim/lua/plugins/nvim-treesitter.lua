@@ -1,7 +1,5 @@
 local config = function()
-    local treesitter = require('nvim-treesitter.configs')
-
-    treesitter.setup({
+    require('nvim-treesitter.configs').setup({
         auto_install = true,
         highlight = {
             enable = true,
@@ -44,11 +42,28 @@ local config = function()
             "json",
             "ruby",
         },
+        textobjects = {
+            select = {
+
+                enable = true,
+                keymaps = {
+                    ["af"] = "@function.outer",
+                    ["if"] = "@function.inner",
+                    ["ic"] = "@class.inner",
+                    ["ac"] = "@class.outer",
+                    ["ib"] = "@block.inner",
+                    ["ab"] = "@block.outer",
+                },
+            },
+        },
     })
 end
 
 return {
-    'nvim-treesitter/nvim-treesitter',
-    event = { "BufReadPre", "BufNewFile" },
-    config = config,
+    {
+        'nvim-treesitter/nvim-treesitter',
+        event = { "BufReadPre", "BufNewFile" },
+        config = config,
+    },
+    { 'nvim-treesitter/nvim-treesitter-textobjects' }
 }

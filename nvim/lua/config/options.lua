@@ -42,3 +42,4 @@ opt.encoding = 'UTF-8'
 -- opt.foldmethod = 'expr'
 -- opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
+opt.cursorline = true

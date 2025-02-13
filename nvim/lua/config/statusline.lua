@@ -54,15 +54,15 @@ vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
 
 -- Auto-update Git branch when entering a buffer
 vim.api.nvim_create_autocmd(
-    { "BufEnter", "FocusGained", "ShellCmdPost", "FileChangedShellPost", "FileWritePost", "BufWritePost", "DirChanged" },
+    { "BufEnter", "FocusGained", "FileChangedShellPost", "FileWritePost", "BufWritePost", "DirChanged" },
     {
         callback = function() _G.update_git_branch() end
     })
 
-local timer = vim.loop.new_timer()
-timer:start(0, 1000, vim.schedule_wrap(function()
-    _G.update_git_branch()
-end))
+-- local timer = vim.loop.new_timer()
+-- timer:start(0, 1000, vim.schedule_wrap(function()
+--     _G.update_git_branch()
+-- end))
 
 -- Set statusline
 vim.o.statusline = table.concat({

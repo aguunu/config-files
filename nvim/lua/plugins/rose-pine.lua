@@ -29,7 +29,9 @@ local config = function()
             FzfLuaHeaderText = { fg = "iris" },
             FzfLuaLivePrompt = { fg = "iris" },
             -- statusline
-            StatusLine = { fg = "muted", bg = "surface" },
+            -- StatusLine = { fg = "muted", bg = "surface" },
+            StatusLine = {fg = "iris", bg = "iris", blend=10},
+            StatusLineNC = {fg="subtle", bg="surface"}
         },
     })
 

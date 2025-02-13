@@ -20,12 +20,19 @@ local config = function()
         border = border
     })
 
-    -- Add border to the diagnostic popup window
     vim.diagnostic.config({
-        -- virtual_text = {
-        --     prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
-        -- },
-        float = { border = border },
+        underline = true,
+        severity_sort = true,
+        update_in_insert = false,
+        virtual_text = {
+            source = "always",  -- Or "if_many"
+            prefix = '■', -- Could be '', '▎', 'x'
+        },
+        float = {
+            source = "always",  -- Or "if_many"
+            border = border,
+            header='',
+        },
     })
 end
 

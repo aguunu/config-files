@@ -33,17 +33,6 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 keymap.set('n', '<leader>dk', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
 keymap.set('n', '<leader>dj', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
 keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Open diagnostic float'})
-vim.diagnostic.config({
-    virtual_text = {
-        source = "always",  -- Or "if_many"
-        prefix = '■', -- Could be '', '▎', 'x'
-    },
-    severity_sort = true,
-    float = {
-        source = "always",  -- Or "if_many"
-    },
-    update_in_insert = false,
-})
 
 -- lsp
 keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions', noremap = true, silent = true })
@@ -51,7 +40,7 @@ keymap.set('n', '<leader>cd', vim.lsp.buf.definition, { desc = 'Go to definition
 keymap.set('n', '<leader>ci', vim.lsp.buf.implementation, { desc = 'Go to implementation' })
 keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = 'Format All' })
 keymap.set('v', '<leader>cf', vim.lsp.buf.format, { desc = 'Format Selection' })
-keymap.set('n', '<leader>cr', vim.lsp.buf.references, { desc = 'Go to references' })
+keymap.set('n', '<leader>cg', vim.lsp.buf.references, { desc = 'Go to references' })
 keymap.set('n', '<leader>cc', vim.lsp.buf.hover, { desc = 'Hover' })
 keymap.set('n', '<leader>cs', vim.lsp.buf.signature_help, { desc = 'Signature help' })
 keymap.set('n', '<leader>ch', vim.lsp.buf.document_highlight, { desc = 'Document highlight' })
