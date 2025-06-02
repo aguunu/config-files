@@ -22,6 +22,11 @@ local config = function()
             CmpFloatBorder = { fg = "none", bg = "subtle" },
             CmpNormal = { fg = "text", bg = "surface" },
             CmpDocNormal = { fg = "text", bg = "surface" },
+            -- blink
+            BlinkCmpBorder = { fg = "none", bg = "subtle" },
+            BlinkCmpFloatBorder = { fg = "none", bg = "subtle" },
+            BlinkCmpNormal = { fg = "text", bg = "surface" },
+            BlinkCmpDocNormal = { fg = "text", bg = "surface" },
             -- floating window highlights
             -- NormalFloat = { fg = "text", bg = "surface" },
             -- FloatBorder = { fg = "none", bg = "surface" },
@@ -30,8 +35,8 @@ local config = function()
             FzfLuaLivePrompt = { fg = "iris" },
             -- statusline
             -- StatusLine = { fg = "muted", bg = "surface" },
-            StatusLine = {fg = "iris", bg = "iris", blend=10},
-            StatusLineNC = {fg="subtle", bg="surface"}
+            StatusLine = { fg = "iris", bg = "iris", blend = 10 },
+            StatusLineNC = { fg = "subtle", bg = "surface" }
         },
     })
 

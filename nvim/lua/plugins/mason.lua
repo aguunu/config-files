@@ -21,6 +21,15 @@ return {
         mason_lspconfig.setup({
             ensure_installed = {
                 'lua_ls',
+                "pyright",
+                "rust_analyzer",
+                "texlab",
+                "clangd",
+                "ruff",
+                "jdtls",
+                "ts_ls",
+                "jsonls",
+                "eslint",
             }
         })
     end

@@ -1,6 +1,6 @@
 return {
     'stevearc/dressing.nvim',
-    enabled = true,
+    enabled = false,
     opts = {
         select = {
             -- Priority list of preferred vim.select implementations

@@ -8,6 +8,8 @@ local config = function()
     lspconfig.ruff.setup({})
     lspconfig.jdtls.setup({})
     lspconfig.ts_ls.setup({})
+    lspconfig.jsonls.setup({})
+    lspconfig.eslint.setup({})
     -- lspconfig.harper_ls.setup({
     --     codeActions = {
     --         forceStable = true,
@@ -25,13 +27,13 @@ local config = function()
         severity_sort = true,
         update_in_insert = false,
         virtual_text = {
-            source = "always",  -- Or "if_many"
+            source = "always", -- Or "if_many"
             prefix = '■', -- Could be '', '▎', 'x'
         },
         float = {
-            source = "always",  -- Or "if_many"
+            source = "always", -- Or "if_many"
             border = border,
-            header='',
+            header = '',
         },
     })
 end
@@ -39,7 +41,7 @@ end
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
-        'hrsh7th/cmp-nvim-lsp',
+        -- 'hrsh7th/cmp-nvim-lsp',
         'williamboman/mason-lspconfig',
         'williamboman/mason.nvim',
     },
