@@ -43,6 +43,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # Plugins
 source "$ZSH/custom/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZSH/custom/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# source "$ZSH/custom/zsh-vi-mode/zsh-vi-mode.zsh"
 
 # Set vi mode
 EDITOR='nvim'
@@ -50,6 +51,7 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
+bindkey '^e' edit-command-line
 
 # Use modern completion system
 autoload -Uz compinit
