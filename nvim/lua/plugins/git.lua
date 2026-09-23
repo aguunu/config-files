@@ -17,13 +17,13 @@ return {
                     end
 
                     -- Navigation
-                    map('n', '<leader>gn', gs.next_hunk, { desc = 'Next hunk' })
-                    map('n', '<leader>gp', gs.prev_hunk, { desc = 'Previous hunk' })
+                    map('n', '<leader>gn', function() gs.nav_hunk('next') end, { desc = 'Next hunk' })
+                    map('n', '<leader>gp', function() gs.nav_hunk('prev') end, { desc = 'Previous hunk' })
 
                     -- Actions
                     map('n', '<leader>gs', gs.stage_hunk, { desc = 'Stage hunk' })
                     map('n', '<leader>gr', gs.reset_hunk, { desc = 'Reset hunk' })
-                    map('n', '<leader>gu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
+                    map('n', '<leader>gu', gs.stage_hunk, { desc = 'Unstage hunk (toggles a staged hunk)' })
                     map('n', '<leader>gS', gs.stage_buffer, { desc = 'Stage buffer' })
                     map('n', '<leader>gR', gs.reset_buffer, { desc = 'Reset buffer' })
 

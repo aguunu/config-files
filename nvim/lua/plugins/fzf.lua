@@ -15,15 +15,14 @@ local config = function()
 
     vim.cmd(":FzfLua register_ui_select")
 
-    local cfg = require("fzf-lua.config")
-    vim.keymap.set('n', '<C-e>', function() fzf.files(cfg) end, { desc = 'Find Files' })
-    vim.keymap.set('n', '<leader>ff', function() fzf.files(cfg) end, { desc = 'Find Files' })
-    vim.keymap.set('n', '<leader>fg', function() fzf.live_grep(cfg) end, { desc = 'Live Grep' })
-    vim.keymap.set('n', '<leader>ft', function() fzf.treesitter(cfg) end, { desc = 'Find Treesitter' })
-    vim.keymap.set('n', '<leader>fb', function() fzf.buffers(cfg) end, { desc = 'Find Buffers' })
-    vim.keymap.set('n', '<leader>fr', function() fzf.buffers(cfg) end, { desc = 'Find Registers' })
-    vim.keymap.set('n', '<leader>fq', function() fzf.builtin(cfg) end, { desc = 'Find Builtin' })
-    vim.keymap.set('n', '<leader>ds', function() fzf.diagnostics_workspace(cfg) end, { desc = 'Workspace Diagnostics' })
+    vim.keymap.set('n', '<C-e>', fzf.files, { desc = 'Find Files' })
+    vim.keymap.set('n', '<leader>ff', fzf.files, { desc = 'Find Files' })
+    vim.keymap.set('n', '<leader>fg', fzf.live_grep, { desc = 'Live Grep' })
+    vim.keymap.set('n', '<leader>ft', fzf.treesitter, { desc = 'Find Treesitter' })
+    vim.keymap.set('n', '<leader>fb', fzf.buffers, { desc = 'Find Buffers' })
+    vim.keymap.set('n', '<leader>fr', fzf.registers, { desc = 'Find Registers' })
+    vim.keymap.set('n', '<leader>fq', fzf.builtin, { desc = 'Find Builtin' })
+    vim.keymap.set('n', '<leader>ds', fzf.diagnostics_workspace, { desc = 'Workspace Diagnostics' })
 end
 
 return {

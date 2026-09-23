@@ -1,5 +1,5 @@
 -- vim.cmd('let g:netrw_liststyle = 3')
-vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank()')
+vim.cmd('au TextYankPost * silent! lua vim.hl.on_yank()')
 
 -- don't give the intro message when starting Vim
 vim.opt.shortmess:append({ I = true })

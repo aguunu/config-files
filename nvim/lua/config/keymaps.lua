@@ -30,8 +30,10 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 
 -- diagnostics
-keymap.set('n', '<leader>dk', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
-keymap.set('n', '<leader>dj', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
+keymap.set('n', '<leader>dk', function() vim.diagnostic.jump({ count = -1, float = true }) end,
+    { desc = 'Go to previous diagnostic' })
+keymap.set('n', '<leader>dj', function() vim.diagnostic.jump({ count = 1, float = true }) end,
+    { desc = 'Go to next diagnostic' })
 keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Open diagnostic float'})
 
 -- lsp
@@ -41,7 +43,8 @@ keymap.set('n', '<leader>ci', vim.lsp.buf.implementation, { desc = 'Go to implem
 keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = 'Format All' })
 keymap.set('v', '<leader>cf', vim.lsp.buf.format, { desc = 'Format Selection' })
 keymap.set('n', '<leader>cg', vim.lsp.buf.references, { desc = 'Go to references' })
-keymap.set('n', '<leader>cc', vim.lsp.buf.hover, { desc = 'Hover' })
+keymap.set('n', '<leader>cc', function() vim.lsp.buf.hover({ border = 'single' }) end, { desc = 'Hover' })
+keymap.set('n', 'K', function() vim.lsp.buf.hover({ border = 'single' }) end, { desc = 'Hover' })
 keymap.set('n', '<leader>cs', vim.lsp.buf.signature_help, { desc = 'Signature help' })
 keymap.set('n', '<leader>ch', vim.lsp.buf.document_highlight, { desc = 'Document highlight' })
 keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Rename references' })

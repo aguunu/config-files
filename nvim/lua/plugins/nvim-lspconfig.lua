@@ -1,5 +1,4 @@
 local config = function()
-    local lspconfig = require('lspconfig')
     -- lspconfig.lua_ls.setup({})
     -- lspconfig.pyright.setup({})
     -- lspconfig.rust_analyzer.setup({})
@@ -18,20 +17,16 @@ local config = function()
 
     local border = 'single'
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = border
-    })
-
     vim.diagnostic.config({
         underline = true,
         severity_sort = true,
         update_in_insert = false,
         virtual_text = {
-            source = "always", -- Or "if_many"
+            source = true, -- Or "if_many"
             prefix = '■', -- Could be '', '▎', 'x'
         },
         float = {
-            source = "always", -- Or "if_many"
+            source = true, -- Or "if_many"
             border = border,
             header = '',
         },
@@ -42,7 +37,7 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
         -- 'hrsh7th/cmp-nvim-lsp',
-        'williamboman/mason-lspconfig',
+        'williamboman/mason-lspconfig.nvim',
         'williamboman/mason.nvim',
     },
     event = { 'BufReadPre', 'BufNewFile', },

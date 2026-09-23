@@ -46,7 +46,6 @@ end
 return {
     enabled = true,
     "rose-pine/neovim",
-    dependencies = { 'nvim-lualine/lualine.nvim', },
     lazy = false,
     priority = 1000,
     opts = {},

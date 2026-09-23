@@ -10,30 +10,56 @@ _G.update_lsp_diagnostics = function()
     local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
 
     local status = ""
-    if errors > 0 then status = status .. "  " .. errors end
-    if warnings > 0 then status = status .. "  " .. warnings end
-    if info > 0 then status = status .. "  " .. info end
+    if errors > 0 then status = status .. "  " .. errors end
+    if warnings > 0 then status = status .. "  " .. warnings end
+    if info > 0 then status = status .. "  " .. info end
 
-    if hints > 0 then status = status .. "  " .. hints end
+    if hints > 0 then status = status .. "  " .. hints end
 
     _G.cached_lsp_diagnostics = status
 end
 
--- Function to update git branch only when needed
+-- Working tree state per git root, resolved off the main loop so that redrawing
+-- the statusline never waits on a git subprocess.
+local dirty_by_root = {}
+local pending_by_root = {}
+
+local function refresh_dirty()
+    local status = vim.b.gitsigns_status_dict
+    local root = status and status.root
+
+    if not root or pending_by_root[root] then
+        return
+    end
+
+    pending_by_root[root] = true
+
+    vim.system({ "git", "status", "--porcelain" }, { cwd = root, text = true }, function(result)
+        vim.schedule(function()
+            pending_by_root[root] = nil
+            dirty_by_root[root] = result.code == 0 and result.stdout ~= ""
+
+            _G.update_git_branch()
+            vim.cmd("redrawstatus")
+        end)
+    end)
+end
+
+-- Branch name comes from gitsigns, which already tracks it per buffer
 _G.update_git_branch = function()
-    local branch = vim.fn.FugitiveHead()
-    if branch == "" then
+    local status = vim.b.gitsigns_status_dict
+
+    if not status or not status.head or status.head == "" then
         _G.cached_git_branch = ""
 
         return
     end
 
-    -- Check for uncommitted changes
-    local git_status = vim.fn.systemlist("git status --porcelain")
+    if dirty_by_root[status.root] == nil then
+        refresh_dirty()
+    end
 
-    local is_dirty = #git_status > 0
-
-    _G.cached_git_branch = "on " .. branch .. (is_dirty and "*" or "")
+    _G.cached_git_branch = "on " .. status.head .. (dirty_by_root[status.root] and "*" or "")
 end
 
 -- Functions to return cached values for statusline
@@ -52,17 +78,23 @@ vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
     callback = function() _G.update_lsp_diagnostics() end
 })
 
--- Auto-update Git branch when entering a buffer
-vim.api.nvim_create_autocmd(
-    { "BufEnter", "FocusGained", "FileChangedShellPost", "FileWritePost", "BufWritePost", "DirChanged" },
-    {
-        callback = function() _G.update_git_branch() end
-    })
+vim.api.nvim_create_autocmd({ "BufEnter", "DirChanged" }, {
+    callback = function() _G.update_git_branch() end
+})
 
--- local timer = vim.loop.new_timer()
--- timer:start(0, 1000, vim.schedule_wrap(function()
---     _G.update_git_branch()
--- end))
+vim.api.nvim_create_autocmd("User", {
+    pattern = { "GitSignsUpdate", "GitSignsChanged" },
+    callback = function() _G.update_git_branch() end
+})
+
+vim.api.nvim_create_autocmd({ "FocusGained", "BufWritePost", "DirChanged" }, {
+    callback = function() refresh_dirty() end
+})
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "GitSignsChanged",
+    callback = function() refresh_dirty() end
+})
 
 -- Set statusline
 vim.o.statusline = table.concat({
