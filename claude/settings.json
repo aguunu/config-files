@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "model": "opus[1m]",
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "tui": "fullscreen",
+  "autoMemoryEnabled": false,
+  "skipWorkflowUsageWarning": true,
+  "theme": "auto",
+  "editorMode": "vim",
+  "autoCompactEnabled": false,
+  "remoteControlAtStartup": false,
+  "skipAutoPermissionPrompt": true
+}
